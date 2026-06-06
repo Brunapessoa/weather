@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import CurrentWeather from "./components/CurrentWeather";
+import SearchBar from "./components/SearchBar";
 
 function App() {
 
@@ -38,10 +40,21 @@ function App() {
 
   return (
     <>
-    <h1 className='text-3xl font-bold text-blue-500'>
+    <header>
+      <h1 className='w-fit m-auto text-3xl font-bold text-blue-500'>
       Tailwind funcionando!
       </h1>
-      <pre>{JSON.stringify(weather, null, 2)}</pre>
+    </header>
+    <main>
+      <SearchBar onSearch={(newCity) => {
+          setCity(newCity)
+          fetchWeather(newCity)
+      }} />
+      {/* <pre>{JSON.stringify(weather, null, 2)}</pre> */}
+      {weather && <CurrentWeather weather={weather} />} 
+      {/* O weather && garante que o componente só renderiza quando os dados já chegaram. */}
+    </main>
+
 
     </> 
 
