@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import CurrentWeather from "./components/CurrentWeather";
 import SearchBar from "./components/SearchBar";
+import ForecastList from "./components/ForecastList";
 
 function App() {
 
@@ -40,25 +41,24 @@ function App() {
 
   return (
     <>
-    <header>
-      <h1 className='w-fit m-auto text-3xl font-bold text-blue-500'>
-      Tailwind funcionando!
-      </h1>
+    <header className="block w-full m-0 p-0 shadow-blue-400 shadow-md">
+      <img src="/img-header-6.png" alt="weather app logo" className="w-full"/>
     </header>
     <main>
       <SearchBar onSearch={(newCity) => {
           setCity(newCity)
           fetchWeather(newCity)
       }} />
-      {/* <pre>{JSON.stringify(weather, null, 2)}</pre> */}
+      {/* { <pre>{JSON.stringify(weather, null, 2)}</pre> } */}
       {weather && <CurrentWeather weather={weather} />} 
       {/* O weather && garante que o componente só renderiza quando os dados já chegaram. */}
+      {weather && <ForecastList forecast={weather.forecast.forecastday} />}
     </main>
 
 
     </> 
 
-  )
+)
 }
 
 export default App

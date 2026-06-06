@@ -1,10 +1,8 @@
 function CurrentWeather({ weather }) {
 
-
-
     return (
-        <div className="w-fit m-auto mt-15">
-            <div className="">
+        <div className="bg-white w-fit m-auto mt-15 p-10 rounded-lg">
+            <div className="w-fit m-auto">
             {weather.location.name}
             </div>
             <div className="p-10">
