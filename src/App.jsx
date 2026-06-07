@@ -86,11 +86,11 @@ function App() {
 
   return (
     <>
-    <header className="relative h-[20vh] flex flex-col justify-start items-start pl-10 pt-16 text-white ">
+    <header className="relative h-[20vh] flex flex-col justify-start items-start pl-10 lg:pl-40 pt-16 text-white ">
       <h1 className="font-[Montserrat] font-semibold text-5xl [text-shadow:0_2px_10px_rgb(0_0_0_/70%)]">Weatherly</h1>
       <p className="font-[Montserrat] font-medium mt-2 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)]">Forecast you can trust.</p>
     </header>
-    <main>
+    <main className="mt-5 pb-8 lg:pb-10">
       <SearchBar onSearch={(newCity) => {
           setCity(newCity)
           fetchCityImg(newCity)

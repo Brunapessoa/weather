@@ -1,7 +1,7 @@
 function CurrentWeather({ weather, cityImg }) {
 
     return (
-        <div className={`grid grid-cols-2 grid-rows-[auto_1fr_auto] gap-4 w-90 h-130 m-auto mt-15 p-10 rounded-lg bg-cover ${cityImg ? '' : 'bg-gray-600 opacity-50'}`}
+        <div className={`grid grid-cols-2 grid-rows-[auto_1fr_auto] gap-4 w-90 lg:w-140 h-140 m-auto mt-15 p-10 rounded-lg bg-cover ${cityImg ? '' : 'bg-gray-600 opacity-50'}`}
             style={cityImg ? { backgroundImage: `url(${cityImg})`} : {}}>
             <div className="col-span-2 text-center w-fit mx-auto p-0.5 rounded-sm text-2xl text-white bg-gray-600/50 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)]
 ">
