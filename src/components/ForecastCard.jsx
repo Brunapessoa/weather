@@ -1,18 +1,20 @@
 function ForecastCard({ nextDay }) {
 
     return (
-            <tr>
-                <td>         
-                    {nextDay.date}
-                </td>
-                <td> 
-                    {nextDay.day.maxtemp_c}
-                </td>
-                <td> 
-                    {nextDay.day.mintemp_c}
-                    </td>
-            </tr>
+            <li className=" text-white [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] my-2 ">
+                <div className="grid grid-cols-3 bg-gray-800/70 px-2 py-5 rounded-sm text-md">
+                    <div className="text-center">         
+                        {nextDay.date}
+                    </div>
+                    <div className="text-right"> 
+                        {nextDay.day.maxtemp_c}<span className="text-xs align-top">°C</span> 
+                    </div>
+                    <div className="text-right"> 
+                        {nextDay.day.mintemp_c}<span className="text-xs align-top">°C</span> 
+                    </div>
+                </div>
+            </li>
     )
 }
 
-export default ForecastCard;
+export default ForecastCard;5
