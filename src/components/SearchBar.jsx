@@ -6,7 +6,7 @@ function SearchBar({ onSearch }) {
 
     return(
         <div className="w-fit m-auto mt-15">
-            <label htmlFor="" className="font-[Montserrat] font-bold mt-2 [text-shadow:0px_2px_5px_rgb(0_0_0_/150%)] text-slate-200">City: </label>
+            <label htmlFor="" className="font-[Montserrat] font-bold text-xl mx-2 [text-shadow:0px_2px_5px_rgb(0_0_0_/150%)] text-slate-200">City: </label>
             <input type="search" value={search} name="" id="" placeholder="Type the name of the City" 
             className="bg-white border-2 border-slate-500 pl-1 pr-1 pt-0.5 pb-0.5 rounded-sm"
             onChange={(e) => setSearch(e.target.value)}/>

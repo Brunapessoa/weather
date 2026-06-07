@@ -5,6 +5,9 @@ function CurrentWeather({ weather }) {
             <div className="w-fit m-auto">
             {weather.location.name}
             </div>
+            <div>
+            {weather.location.region}
+            </div>
             <div className="p-10">
             {weather.current.temp_c}
             </div>
