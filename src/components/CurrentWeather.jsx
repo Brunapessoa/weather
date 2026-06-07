@@ -1,19 +1,21 @@
 function CurrentWeather({ weather, cityImg }) {
 
     return (
-        <div className={`w-90 h-130 m-auto mt-15 p-10 rounded-lg bg-cover ${cityImg ? '' : 'bg-gray-600 opacity-50'}`}
+        <div className={`grid grid-cols-2 grid-rows-[auto_1fr_auto] gap-4 w-90 h-130 m-auto mt-15 p-10 rounded-lg bg-cover ${cityImg ? '' : 'bg-gray-600 opacity-50'}`}
             style={cityImg ? { backgroundImage: `url(${cityImg})`} : {}}>
-            <div className="w-fit m-auto text-amber-50 bg-gray-600 opacity-50">
-            {weather.location.name}
+            <div className="col-span-2 text-center w-fit mx-auto p-0.5 rounded-sm text-2xl text-white bg-gray-600/50">
+            {weather.location.name}, {weather.location.region}
             </div>
-            <div className="w-fit m-auto text-amber-50 bg-gray-600 opacity-50">
-            {weather.location.region}
+            <div className="mt-30 col-start-2 self-end justify-self-end rounded-sm text-right px-2 py-1 text-white bg-gray-600/50">
+                <div className="text-5xl">
+                {weather.current.temp_c}
+                </div>
+                <div className="w-fit m-auto">
+                {weather.current.condition.text}
+                </div>
             </div>
-            <div className="p-10 text-amber-50  bg-gray-600 opacity-50">
-            {weather.current.temp_c}
-            </div>
-            <div className="w-fit m-auto text-amber-50 bg-gray-600 opacity-50">
-            {weather.current.condition.text}
+            <div className="col-span-2 text-center text-sm py-1 px-2 w-fit mx-auto text-white  bg-gray-600/50">
+                Max: {weather.forecast.forecastday[0].day.maxtemp_c} | Min: {weather.forecast.forecastday[0].day.mintemp_c} 
             </div>
         </div>
     )
