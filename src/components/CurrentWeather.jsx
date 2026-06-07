@@ -10,14 +10,14 @@ function CurrentWeather({ weather, cityImg }) {
             <div className="col-start-2 self-end justify-self-end rounded-sm text-right px-2 py-1 text-white bg-gray-600/50 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)]
 ">
                 <div className="text-5xl">
-                {weather.current.temp_c}<span className="text-lg align-top">°C </span>
+                {Math.round(weather.current.temp_c)}<span className="text-lg align-top">°</span>
                 </div>
                 <div className="w-fit m-auto">
                 {weather.current.condition.text}
                 </div>
             </div>
             <div className="col-span-2 text-center text-sm py-1 px-2 w-fit mx-auto text-white rounded-sm bg-gray-600/50 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)]">
-                Max: {weather.forecast.forecastday[0].day.maxtemp_c}<span className="text-xs align-top">°C </span>| Min: {weather.forecast.forecastday[0].day.mintemp_c}<span className="text-xs align-top">°C</span> 
+                Max: {Math.round(weather.forecast.forecastday[0].day.maxtemp_c)}° | Min: {Math.round(weather.forecast.forecastday[0].day.mintemp_c)}° 
             </div>
         </div>
     )
