@@ -41,8 +41,9 @@ function App() {
 
   return (
     <>
-    <header className="block w-full m-0 p-0 shadow-blue-400 shadow-md">
-      <img src="/img-header-6.png" alt="weather app logo" className="w-full"/>
+    <header className="relative h-[20vh] flex flex-col justify-start items-start pl-10 pt-16 text-white ">
+      <h1 className="font-[Montserrat] font-semibold text-5xl [text-shadow:_0_2px_10px_rgb(0_0_0_/_70%)]">Weatherly</h1>
+      <p className="font-[Montserrat] font-medium mt-2 [text-shadow:_0_2px_10px_rgb(0_0_0_/_70%)]">Forecast you can trust.</p>
     </header>
     <main>
       <SearchBar onSearch={(newCity) => {
