@@ -20,9 +20,12 @@ function App() {
     setLoading(true);
     
     try {
+      setError(null)
       const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${city}&days=5`);
       
-      await new Promise((resolve) => setTimeout(resolve, 5000))
+      if(!response.ok) {
+        throw new Error('City not found. Please check the spelling and try again.')
+      }
 
       const data = await response.json()
       
@@ -30,7 +33,8 @@ function App() {
       
       setWeather(data)
     } catch (err) {
-      
+
+      setWeather(null)
       setError(err.message)
       
     } finally {
@@ -66,6 +70,7 @@ function App() {
         }} />
 
           {loading && <p className="font-[Montserrat] font-medium text-2xl w-full text-center my-20 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] text-white">Loading...</p>}
+          {error && <p className="font-[Montserrat] font-medium text-2xl w-full text-center my-20 mx-auto px-10 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] text-white">{error}</p>}
           {/* { <pre>{JSON.stringify(weather, null, 2)}</pre> } */}
           {weather && view === 'today' && <CurrentWeather weather={weather} />} 
           {/* O weather && garante que o componente só renderiza quando os dados já chegaram. */}
