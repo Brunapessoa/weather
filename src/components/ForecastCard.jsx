@@ -1,21 +1,17 @@
 function ForecastCard({ nextDay }) {
 
     return (
-        
-        <div className="w-full grid grid-cols-3 mt-15">
-        <p>         
-            {nextDay.date}
-        </p>
-        <p> 
-            {nextDay.day.maxtemp_c}
-        </p>
-        <p> 
-            {nextDay.day.mintemp_c}
-            </p>
-        </div>
-
-
-
+            <tr>
+                <td>         
+                    {nextDay.date}
+                </td>
+                <td> 
+                    {nextDay.day.maxtemp_c}
+                </td>
+                <td> 
+                    {nextDay.day.mintemp_c}
+                    </td>
+            </tr>
     )
 }
 

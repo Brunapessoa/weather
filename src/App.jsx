@@ -7,6 +7,8 @@ function App() {
 
   const [city, setCity] = useState("London");
 
+  const [view, setView] = useState('today')
+
   const [weather, setWeather] = useState(null);
 
   const [loading, setLoading] = useState(false);
@@ -50,15 +52,20 @@ function App() {
           setCity(newCity)
           fetchWeather(newCity)
       }} />
-      {/* { <pre>{JSON.stringify(weather, null, 2)}</pre> } */}
-      {weather && <CurrentWeather weather={weather} />} 
-      {/* O weather && garante que o componente só renderiza quando os dados já chegaram. */}
-      {weather && <ForecastList forecast={weather.forecast.forecastday} />}
+
+          {/* { <pre>{JSON.stringify(weather, null, 2)}</pre> } */}
+          {weather && view === 'today' && <CurrentWeather weather={weather} />} 
+          {/* O weather && garante que o componente só renderiza quando os dados já chegaram. */}
+          {weather && view ==='forecast' && <ForecastList forecast={weather.forecast.forecastday} />}  
+      <div className="mt-5 flex justify-center text-white" >
+          <button type="button" onClick={() => setView('today')}
+          className="font-[Montserrat] font-medium [text-shadow:_0_2px_10px_rgb(0_0_0_/_70%)] pr-5 cursor-pointer">Today</button>
+          <>|</>
+          <button type="button" onClick={() => setView('forecast')}
+          className="font-[Montserrat] font-medium [text-shadow:_0_2px_10px_rgb(0_0_0_/_70%)] pl-5 cursor-pointer">Next 5 days</button>      
+      </div>
     </main>
-
-
     </> 
-
 )
 }
 

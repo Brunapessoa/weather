@@ -3,10 +3,19 @@ import ForecastCard from "./ForecastCard";
 function ForecastList({ forecast }) {
 
     return(
-        <div className="w-3/4 mx-auto">
-            {forecast.map((day) => (
-                <ForecastCard key={day.date} nextDay={day}/>
-            ))}
+        <div className="bg-white w-90 h-120 m-auto mt-15 p-10 rounded-lg">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Max</th>
+                    <th>Min</th>
+                </tr>
+                <tbody>
+                        {forecast.map((day) => (
+                        <ForecastCard key={day.date} nextDay={day}/>
+                        ))}
+                </tbody>
+            </table>
         </div>
     )
 }
