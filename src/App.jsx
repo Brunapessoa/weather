@@ -7,7 +7,9 @@ function App() {
 
   const [city, setCity] = useState("Paris");
 
-  const [view, setView] = useState('today')
+  const [view, setView] = useState('today');
+
+  const [cityImg, setCityImg] = useState(null);
 
   const [weather, setWeather] = useState(null);
 
@@ -28,10 +30,11 @@ function App() {
       }
 
       const data = await response.json()
-      
       console.log(data.location);
       
       setWeather(data)
+      fetchCityImg(data.location.name)
+
     } catch (err) {
 
       setWeather(null)
@@ -40,6 +43,30 @@ function App() {
     } finally {
       
       setLoading(false)
+    }
+  }
+
+  const fetchCityImg = async (city) => {
+
+    try {
+      setCityImg(null)
+      const response = await fetch(`https://api.unsplash.com/search/photos?query=${city}&client_id=${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}`);
+
+      if (!response.ok) {
+        return
+      }
+      
+      const data = await response.json();
+      console.log(data);
+      
+
+      if (data.results.length > 0) {
+        setCityImg(data.results[0].urls.regular)
+      } else {
+        setCityImg(null)
+      }
+    } catch (err) {
+      setCityImg(null)
     }
   }
   
@@ -66,15 +93,17 @@ function App() {
     <main>
       <SearchBar onSearch={(newCity) => {
           setCity(newCity)
+          fetchCityImg(newCity)
           fetchWeather(newCity)
+          
         }} />
 
           {loading && <p className="font-[Montserrat] font-medium text-2xl w-full text-center my-20 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] text-white">Loading...</p>}
           {error && <p className="font-[Montserrat] font-medium text-2xl w-full text-center my-20 mx-auto px-10 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] text-white">{error}</p>}
           {/* { <pre>{JSON.stringify(weather, null, 2)}</pre> } */}
-          {weather && view === 'today' && <CurrentWeather weather={weather} />} 
+          {!loading && weather && view === 'today' && <CurrentWeather weather={weather} cityImg={cityImg} />} 
           {/* O weather && garante que o componente só renderiza quando os dados já chegaram. */}
-          {weather && view ==='forecast' && <ForecastList forecast={weather.forecast.forecastday} />}  
+          {!loading && weather && view ==='forecast' && <ForecastList forecast={weather.forecast.forecastday} cityImg={cityImg}/>}  
       <div className="mt-5 flex justify-center text-white" >
           <button type="button" onClick={() => setView('today')}
           className="font-[Montserrat] font-medium [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] pr-5 cursor-pointer">Today</button>
