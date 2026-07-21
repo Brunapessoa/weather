@@ -98,8 +98,8 @@ function App() {
           
         }} />
 
-          {loading && <p className="font-[Montserrat] font-medium text-2xl w-full text-center my-20 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] text-white">Loading...</p>}
-          {error && <p className="font-[Montserrat] font-medium text-2xl w-full text-center my-20 mx-auto px-10 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] text-white">{error}</p>}
+          {loading && <p className="font-[Montserrat] font-medium text-2xl text-center my-20 mx-6 px-6 py-2 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] text-white bg-gray-600/60 rounded-sm">Loading...</p>}
+          {error && <p className="font-[Montserrat] font-medium text-2xl text-center my-20 mx-6 px-6 py-2 [text-shadow:0_2px_10px_rgb(0_0_0_/70%)] text-white bg-gray-600/60 rounded-sm">{error}</p>}
           {/* { <pre>{JSON.stringify(weather, null, 2)}</pre> } */}
           {!loading && weather && view === 'today' && <CurrentWeather weather={weather} cityImg={cityImg} />} 
           {/* O weather && garante que o componente só renderiza quando os dados já chegaram. */}
